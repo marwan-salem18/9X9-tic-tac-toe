@@ -1,0 +1,19 @@
+#root {
+  text-align: center;
+}
+.game-row {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10px;
+  align-items: center;
+  justify-content: center;
+}
+.game{
+  margin: 10px;
+}
+.square{
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  border: 0 0 black;
+}
