@@ -1,8 +1,8 @@
 import Square from "./square";
 
-function Board({squares,handleClick}) {
+function Board({squares,handleClick,isOn}) {
     return(
-        <div className="game">
+        <div className={`game`} id={isOn ? 'ON': ''}>
             <div className="board-row">
                 <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
                 <Square value={squares[1]} onSquareClick={() => handleClick(1)} />

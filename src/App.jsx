@@ -36,6 +36,7 @@ function App() {
               {squares.slice(rowIndex, rowIndex + 3).map((subRow, index) => (
                 <Board
                   key={`board-${rowIndex + index}`} 
+                  isOn={index + rowIndex === board}
                   squares={subRow} 
                   handleClick={(col) => handleClick(rowIndex + index, col)} 
                 />
