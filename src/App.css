@@ -1,23 +1,27 @@
 #root {
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 .game-row {
   display: flex;
   flex-direction: row;
-  margin: 10px 10px;
   align-items: center;
   justify-content: center;
 }
 #ON{
-  border: 2px solid rgb(11, 235, 255);   
+  border: 2px solid rgb(11, 235, 255); 
+  animation: fadeInOut 3s infinite; /* Repeating animation */
 }
 .game{
-  margin: 10px;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   width: 120px;
   height: 120px;
   border: 2px solid black;
+  padding-bottom: 4px;
+  margin-top: 1px;
+  margin-left: 1px;
 }
 .square{
   background-color: white;
@@ -25,4 +29,16 @@
   width: 40px;
   border: 1px solid black;
   box-sizing: border-box; /* Ensures borders are included in size calculations */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    opacity: 0.3 /* Semi-transparent */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+  }
 }

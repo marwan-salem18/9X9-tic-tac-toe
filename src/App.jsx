@@ -6,10 +6,16 @@ function App() {
   const [nextPlayer, setNextPlayer] = useState(true)
   const [squares, setSquares] = useState(Array.from({ length: 9 }, () => Array(9).fill(null)));
   const [board, setBoard] = useState(4)
+  const [winner, setWinner] = useState(Array(9).fill(false))
 
   function handleClick(row,col) {
-    if (board != row || calculateBoardWinner(squares[row])  || squares[row][col]) {
+    if (board != row || squares[row][col]) {
       return
+    }
+    if (calculateBoardWinner(squares[row])) {
+      let nextWin = winner.slice();
+      nextWin[row] = true;
+      setWinner(nextWin)
     }
     const newSquares = squares.slice()
     if (nextPlayer) {
