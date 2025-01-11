@@ -12,11 +12,6 @@ function App() {
     if (board != row || squares[row][col]) {
       return
     }
-    if (calculateBoardWinner(squares[row])) {
-      let nextWin = winner.slice();
-      nextWin[row] = true;
-      setWinner(nextWin)
-    }
     const newSquares = squares.slice()
     if (nextPlayer) {
       newSquares[row][col] = "X";  
@@ -26,6 +21,15 @@ function App() {
     }
     setSquares(newSquares);
     setNextPlayer(!nextPlayer);
+    if (calculateBoardWinner(squares[row])) {
+      let nextWin = winner.slice();
+      nextWin[row] = true;
+      setWinner(nextWin)
+    }
+    if (winner[col] ) {
+      setBoard(true)
+      return;
+    }
     setBoard(col);
   }
   let status
@@ -42,7 +46,7 @@ function App() {
               {squares.slice(rowIndex, rowIndex + 3).map((subRow, index) => (
                 <Board
                   key={`board-${rowIndex + index}`} 
-                  isOn={index + rowIndex === board}
+                  isOn={index + rowIndex === board || board === true && !winner[index + rowIndex]}
                   squares={subRow} 
                   handleClick={(col) => handleClick(rowIndex + index, col)} 
                 />
