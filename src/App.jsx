@@ -7,9 +7,9 @@ function App() {
   const [squares, setSquares] = useState(Array.from({ length: 9 }, () => Array(9).fill(null)));
   const [board, setBoard] = useState(4)
   const [winner, setWinner] = useState(Array(9).fill(false))
-
+  let status
   function handleClick(row,col) {
-    if (board != row || squares[row][col]) {
+    if ((board != row  && board != true)|| squares[row][col] || winner[row] || calculateBoardWinner(winner)) {
       return
     }
     const newSquares = squares.slice()
@@ -25,20 +25,27 @@ function App() {
       let nextWin = winner.slice();
       nextWin[row] = true;
       setWinner(nextWin)
+      if (calculateBoardWinner(nextWin)){
+        setBoard(false)
+        return;
+      }
     }
-    if (winner[col] ) {
+    if (calculateBoardWinner(squares[col])) {
       setBoard(true)
-      return;
     }
-    setBoard(col);
+    else {
+      setBoard(col);
+    }
   }
-  let status
-  status = "Next player: " + (nextPlayer ? "X" : "O");
-  let nextBoard = `Next Board: ${board + 1}`
+  if (board === false) {
+    status = "winner is :" + (nextPlayer? "O": "X");
+  }
+  else{
+    status = "Next player: " + (nextPlayer ? "X" : "O");
+  }
   return (  
     <>
       <div>{status}</div>
-      <div>{nextBoard}</div>
       {squares.map((row, rowIndex) => {
         if (rowIndex % 3 === 0) {
           return (
@@ -58,25 +65,6 @@ function App() {
       })}
     </>
   )
-}
-function calculategameWinner(params) {
-    const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
 }
 function calculateBoardWinner(squares) {
   const lines = [

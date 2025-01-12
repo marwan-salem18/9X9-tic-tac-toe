@@ -19,9 +19,11 @@
   width: 120px;
   height: 120px;
   border: 2px solid black;
-  padding-bottom: 4px;
   margin-top: 1px;
   margin-left: 1px;
+}
+.board-row{
+  display: flex;
 }
 .square{
   background-color: white;
