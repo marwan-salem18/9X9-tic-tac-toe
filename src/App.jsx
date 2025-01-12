@@ -6,30 +6,29 @@ function App() {
   const [nextPlayer, setNextPlayer] = useState(true)
   const [squares, setSquares] = useState(Array.from({ length: 9 }, () => Array(9).fill(null)));
   const [board, setBoard] = useState(4)
-  const [winner, setWinner] = useState(Array(9).fill(false))
+  const [winner, setWinner] = useState(Array(9).fill(null))
   let status
   function handleClick(row,col) {
     if ((board != row  && board != true)|| squares[row][col] || winner[row] || calculateBoardWinner(winner)) {
       return
     }
+
     const newSquares = squares.slice()
-    if (nextPlayer) {
-      newSquares[row][col] = "X";  
-    }
-    else{
-      newSquares[row][col] = "O";   
-    }
+      newSquares[row][col] = nextPlayer? "X" : "O";  
+
     setSquares(newSquares);
     setNextPlayer(!nextPlayer);
+
     if (calculateBoardWinner(squares[row])) {
       let nextWin = winner.slice();
-      nextWin[row] = true;
+      nextWin[row] = nextPlayer? "X" : "O";
       setWinner(nextWin)
       if (calculateBoardWinner(nextWin)){
         setBoard(false)
         return;
       }
     }
+
     if (calculateBoardWinner(squares[col])) {
       setBoard(true)
     }
@@ -37,6 +36,8 @@ function App() {
       setBoard(col);
     }
   }
+
+  
   if (board === false) {
     status = "winner is :" + (nextPlayer? "O": "X");
   }
