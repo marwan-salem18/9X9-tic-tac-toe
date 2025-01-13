@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Board from './componts/Board'
+import Board from './components/Board'
 
 function App() {
   const [nextPlayer, setNextPlayer] = useState(true)
