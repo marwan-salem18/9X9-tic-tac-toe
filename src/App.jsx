@@ -29,7 +29,8 @@ function App() {
       }
     }
 
-    if (calculateBoardWinner(squares[col])) {
+    if (calculateBoardWinner(squares[col]) || (!(squares[col]).includes(null))) {
+      console.log((!squares.includes(null)))
       setBoard(true)
     }
     else {
@@ -54,7 +55,7 @@ function App() {
               {squares.slice(rowIndex, rowIndex + 3).map((subRow, index) => (
                 <Board
                   key={`board-${rowIndex + index}`} 
-                  isOn={index + rowIndex === board || board === true && !winner[index + rowIndex]}
+                  isOn={index + rowIndex === board ||board === true && !winner[index + rowIndex] && subRow.includes(null)}
                   squares={subRow} 
                   handleClick={(col) => handleClick(rowIndex + index, col)} 
                 />
