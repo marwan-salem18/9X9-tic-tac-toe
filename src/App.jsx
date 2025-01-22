@@ -9,7 +9,7 @@ function App() {
   const [winner, setWinner] = useState(Array(9).fill(null))
   let status
   function handleClick(row,col) {
-    if ((board != row  && board != true)|| squares[row][col] || winner[row] || calculateBoardWinner(winner)) {
+    if ( (board !== row  && board !== true) || squares[row][col] || winner[row] || calculateBoardWinner(winner)) {
       return
     }
 
@@ -48,21 +48,25 @@ function App() {
   return (  
     <>
       <div>{status}</div>
-      <div className="game-row">
-        <Board isOn={0 === board ||board === true && !winner[0] && squares[0].includes(null)} squares={squares[0]} handleClick={(col) => handleClick(0,col)} />
-        <Board isOn={1 === board ||board === true && !winner[1] && squares[1].includes(null)} squares={squares[1]} handleClick={(col) => handleClick(1,col)} />
-        <Board isOn={2 === board ||board === true && !winner[2] && squares[2].includes(null)} squares={squares[2]} handleClick={(col) => handleClick(2,col)} />
-      </div>,
-      <div className="game-row">
-        <Board isOn={3 === board ||board === true && !winner[3] && squares[3].includes(null)} squares={squares[3]}   handleClick={(col) => handleClick(3,col)} />
-        <Board isOn={4 === board ||board === true && !winner[4] && squares[4].includes(null)} squares={squares[4]}   handleClick={(col) => handleClick(4,col)} />
-        <Board isOn={5 === board ||board === true && !winner[5] && squares[5].includes(null)} squares={squares[5]}   handleClick={(col) => handleClick(5,col)} />
-      </div>,
-      <div className="game-row">
-        <Board isOn={6 === board ||board === true && !winner[6] && squares[6].includes(null)} squares={squares[6]}   handleClick={(col) => handleClick(6,col)} />
-        <Board isOn={7 === board ||board === true && !winner[7] && squares[7].includes(null)} squares={squares[7]}   handleClick={(col) => handleClick(7,col)} />
-        <Board isOn={8 === board ||board === true && !winner[8] && squares[8].includes(null)} squares={squares[8]}   handleClick={(col) => handleClick(8,col)} />
-      </div>
+      {squares.map((row, rowIndex) => {
+        if (rowIndex % 3 === 0) {
+          return (
+            <div 
+            className="flex-row flex justify-center items-center w-auto h-auto"
+            key={`row-${rowIndex}`}>
+              {squares.slice(rowIndex, rowIndex + 3).map((subRow, index) => (
+                <Board
+                  key={`board-${rowIndex + index}`} 
+                  isOn={index + rowIndex === board ||board === true && !winner[index + rowIndex] && subRow.includes(null)}
+                  squares={subRow} 
+                  handleClick={(col) => handleClick(rowIndex + index, col)} 
+                />
+              ))}
+            </div>
+          );
+        }
+        return null; // Skip rows that are not the start of a new group
+      })}
     </>
   )
 }
