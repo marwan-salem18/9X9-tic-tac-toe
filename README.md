@@ -10,10 +10,6 @@ A React-based implementation of an extended 9x9 Tic-Tac-Toe game. This project o
 - **Winner Detection**: Automatically detects winning combinations.
 - **Responsive Design**: Adaptable to different screen sizes.
 
-## Demo
-
-![Game Screenshot]("C:\Users\marwan\Pictures\Screenshots\Screenshot 2025-01-22 184213.png")
-
 ## Installation
 
 1. **Clone the repository**
