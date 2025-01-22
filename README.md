@@ -12,7 +12,7 @@ A React-based implementation of an extended 9x9 Tic-Tac-Toe game. This project o
 
 ## Demo
 
-![Game Screenshot](./screenshot.png)
+![Game Screenshot]("C:\Users\marwan\Pictures\Screenshots\Screenshot 2025-01-22 184213.png")
 
 ## Installation
 
@@ -32,7 +32,7 @@ A React-based implementation of an extended 9x9 Tic-Tac-Toe game. This project o
    npm start
    ```
 
-   The application will be available at `http://localhost:3000`.
+   The application will be available at `http://localhost:5173`.
 
 ## Usage
 
@@ -45,6 +45,7 @@ A React-based implementation of an extended 9x9 Tic-Tac-Toe game. This project o
 - **React**: Frontend framework for building UI components.
 - **CSS**: Styling for a clean and responsive interface.
 - **JavaScript**: Game logic implementation.
+- **TailwindCSS**: css framework 
 
 ## License
 
@@ -56,3 +57,4 @@ For any questions or feedback, feel free to reach out:
 
 - **Email**: marwan.salem209@gmail.com
 - **GitHub**: [marwan-salem18](https://github.com/marwan-salem18)
+- **linkedin**:[https://www.linkedin.com/in/marwansalem209/](https://www.linkedin.com/in/marwansalem209/)

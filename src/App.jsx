@@ -60,6 +60,7 @@ function App() {
                   isOn={index + rowIndex === board ||board === true && !winner[index + rowIndex] && subRow.includes(null)}
                   squares={subRow} 
                   handleClick={(col) => handleClick(rowIndex + index, col)} 
+                  isWon={winner[index + rowIndex]}
                 />
               ))}
             </div>

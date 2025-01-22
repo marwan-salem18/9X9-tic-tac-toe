@@ -1,6 +1,7 @@
 import Square from "./square";
 
-function Board({squares,handleClick,isOn}) {
+function Board({squares,handleClick,isOn,isWon}) {
+    if (!isWon) {
     return(
         <div className={`grid grid-rows-3 mt-1 ml-1 size-52 ${isOn ?'border-blue-500 border-4 animate-pulse' : 'bg-white border-2'}`} >
             <div className="flex">
@@ -19,7 +20,14 @@ function Board({squares,handleClick,isOn}) {
                 <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
             </div>
         </div>
-    );
+    );}
+    else {
+        return(
+            <div className={`mt-1 ml-1 size-52 border-black border-2 flex `}> 
+            <p className="size-full  text-9xl self-center mt-12">{isWon}</p>
+            </div>
+        )
+    }
 }
 
 export default Board
